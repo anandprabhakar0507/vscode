@@ -784,7 +784,7 @@ export class SettingsEditor2 extends BaseEditor {
 			return this.input.resolve()
 				.then((model: Settings2EditorModel) => {
 					if (token.isCancellationRequested) {
-						return void 0;
+						return undefined;
 					}
 
 					this._register(model.onDidChangeGroups(() => this.onConfigUpdate()));
@@ -880,7 +880,7 @@ export class SettingsEditor2 extends BaseEditor {
 			}
 		}
 
-		return Promise.resolve(void 0);
+		return Promise.resolve(undefined);
 	}
 
 	private updateElementsByKey(keys: string[]): Promise<void> {
@@ -910,7 +910,7 @@ export class SettingsEditor2 extends BaseEditor {
 	private renderTree(key?: string, force = false): Promise<void> {
 		if (!force && key && this.scheduledRefreshes.has(key)) {
 			this.updateModifiedLabelForKey(key);
-			return Promise.resolve(void 0);
+			return Promise.resolve(undefined);
 		}
 
 		// If a setting control is currently focused, schedule a refresh for later
